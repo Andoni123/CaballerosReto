@@ -10,17 +10,25 @@ public class GestorPrincipal {
 
 		Scanner scan = new Scanner(System.in);
 
-		int option = Integer.parseInt(scan.nextLine());
+		int option;
 
 		do {
 
 			Menu.mostrarMenuPrincipal();
+			System.out.println("Introduzca la opcion");
+			option = Integer.parseInt(scan.nextLine());
 
 			switch (option) {
 
 			case Menu.GESTOR:
-				
-
+				GestorCaballero.run(scan);
+			
+				break;
+			
+			case Menu.BATALLA:
+				break;
+			
+			case Menu.MAS_INFORMACION:
 				break;
 
 			default:
