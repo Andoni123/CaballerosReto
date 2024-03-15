@@ -28,12 +28,18 @@ public class GestorCaballero {
 				break;
 				
 			case Menu.MOSTRAR_CABALLERO :
+				int idCaballero=Formulario.pedirIdCaballero(scan);
+				gestorBBDD.getCapalleroId(idCaballero);
 				break;
 				
 			case Menu.MOSTRAR_CABALLEROS :
+				gestorBBDD.getCaballeros();
+
 				break;
 				
 			case Menu.MODIFICAR_CABALLERO :
+				
+				
 				break;
 				
 			case Menu.ELIMINAR_CABALLERO :

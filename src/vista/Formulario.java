@@ -23,4 +23,12 @@ public class Formulario {
 		
 		
 	}
+
+	public static  int pedirIdCaballero(Scanner scan) {
+		int idCaballero;
+		
+		System.out.println("Dame el id del caballero que quieres ver");
+		idCaballero= Integer.parseInt(scan.nextLine());
+		return idCaballero;
+	}
 }
