@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-03-2024 a las 09:43:02
+-- Tiempo de generación: 14-03-2024 a las 21:16:04
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -55,7 +55,7 @@ INSERT INTO `arma` (`idArma`, `Daño`, `Durabilidad`, `Velocidad`, `Material`, `
 
 CREATE TABLE `caballeros` (
   `idCaballero` int(11) NOT NULL,
-  `idEcudero` int(11) NOT NULL,
+  `idEscudero` int(11) NOT NULL,
   `idArma` int(11) NOT NULL,
   `idEscudo` int(11) NOT NULL,
   `Nombre` varchar(30) NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE `caballeros` (
 -- Volcado de datos para la tabla `caballeros`
 --
 
-INSERT INTO `caballeros` (`idCaballero`, `idEcudero`, `idArma`, `idEscudo`, `Nombre`, `FuerzaLucha`, `Habilidad`, `idCaballo`) VALUES
+INSERT INTO `caballeros` (`idCaballero`, `idEscudero`, `idArma`, `idEscudo`, `Nombre`, `FuerzaLucha`, `Habilidad`, `idCaballo`) VALUES
 (1, 1, 1, 1, 'Sir Lancelot', 90, 0, 1),
 (2, 2, 2, 1, 'Sir Robin', 80, 0, 2),
 (3, 3, 3, 1, 'Sir Galahad', 85, 0, 3),
@@ -102,21 +102,34 @@ INSERT INTO `caballo` (`idCaballo`, `Velocidad`, `idCaballero`, `Color`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ecudero`
+-- Estructura de tabla para la tabla `combate`
 --
 
-CREATE TABLE `ecudero` (
-  `idEcudero` int(11) NOT NULL,
+CREATE TABLE `combate` (
+  `id` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `idCaballeroGanador` int(11) NOT NULL,
+  `idCaballeroPerdedor` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `escudero`
+--
+
+CREATE TABLE `escudero` (
+  `idEscudero` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `idCaballero` int(11) NOT NULL,
   `exp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `ecudero`
+-- Volcado de datos para la tabla `escudero`
 --
 
-INSERT INTO `ecudero` (`idEcudero`, `nombre`, `idCaballero`, `exp`) VALUES
+INSERT INTO `escudero` (`idEscudero`, `nombre`, `idCaballero`, `exp`) VALUES
 (1, 'John', 1, 150),
 (2, 'Peter', 2, 120),
 (3, 'Michael', 3, 180),
@@ -164,7 +177,7 @@ ALTER TABLE `caballeros`
   ADD PRIMARY KEY (`idCaballero`),
   ADD KEY `idEscudo` (`idEscudo`),
   ADD KEY `idArma` (`idArma`),
-  ADD KEY `idEcudero` (`idEcudero`),
+  ADD KEY `idEcudero` (`idEscudero`),
   ADD KEY `idCaballo` (`idCaballo`);
 
 --
@@ -174,10 +187,18 @@ ALTER TABLE `caballo`
   ADD PRIMARY KEY (`idCaballo`);
 
 --
--- Indices de la tabla `ecudero`
+-- Indices de la tabla `combate`
 --
-ALTER TABLE `ecudero`
-  ADD PRIMARY KEY (`idEcudero`);
+ALTER TABLE `combate`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idCaballeroGanador` (`idCaballeroGanador`),
+  ADD KEY `idCaballeroPerdedor` (`idCaballeroPerdedor`);
+
+--
+-- Indices de la tabla `escudero`
+--
+ALTER TABLE `escudero`
+  ADD PRIMARY KEY (`idEscudero`);
 
 --
 -- Indices de la tabla `escudo`
@@ -208,10 +229,16 @@ ALTER TABLE `caballo`
   MODIFY `idCaballo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `ecudero`
+-- AUTO_INCREMENT de la tabla `combate`
 --
-ALTER TABLE `ecudero`
-  MODIFY `idEcudero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `combate`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `escudero`
+--
+ALTER TABLE `escudero`
+  MODIFY `idEscudero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `escudo`
@@ -227,10 +254,16 @@ ALTER TABLE `escudo`
 -- Filtros para la tabla `caballeros`
 --
 ALTER TABLE `caballeros`
-  ADD CONSTRAINT `caballeros_ibfk_1` FOREIGN KEY (`idEcudero`) REFERENCES `ecudero` (`idEcudero`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `caballeros_ibfk_1` FOREIGN KEY (`idEscudero`) REFERENCES `escudero` (`idEscudero`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `caballeros_ibfk_2` FOREIGN KEY (`idArma`) REFERENCES `arma` (`idArma`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `caballeros_ibfk_3` FOREIGN KEY (`idEscudo`) REFERENCES `escudo` (`idEscudo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `caballeros_ibfk_4` FOREIGN KEY (`idCaballo`) REFERENCES `caballo` (`idCaballo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `combate`
+--
+ALTER TABLE `combate`
+  ADD CONSTRAINT `combate_ibfk_1` FOREIGN KEY (`idCaballeroGanador`) REFERENCES `caballeros` (`idCaballero`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
