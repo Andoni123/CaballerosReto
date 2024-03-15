@@ -1,12 +1,13 @@
 package controlador;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import vista.Menu;
 
 public class GestorPrincipal {
 
-	public static void run() {
+	public static void run() throws SQLException {
 
 		Scanner scan = new Scanner(System.in);
 
