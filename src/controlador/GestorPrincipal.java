@@ -21,7 +21,7 @@ public class GestorPrincipal {
 			switch (option) {
 
 			case Menu.GESTOR:
-				GestorCaballero.run(scan);
+				GestorCrud.run();;
 			
 				break;
 			
