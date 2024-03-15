@@ -20,10 +20,11 @@ public class GestorPrincipal {
 
 			switch (option) {
 
+				
 			case Menu.GESTOR:
-				GestorCrud.run();;
-			
+				GestorCrud.run(scan);
 				break;
+				
 			
 			case Menu.BATALLA:
 				break;
