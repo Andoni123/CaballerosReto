@@ -42,10 +42,10 @@ public class Menu {
 	public static void mostrarMenuCaballeros() {
 
 		System.out.println("--Menu Caballeros");
-		System.out.println(INSERTAR_CABALLERO + "Insertar un caballero");
-		System.out.println(MOSTRAR_CABALLERO + "Mostrar un caballero");
-		System.out.println(MOSTRAR_CABALLEROS + "Mostrar todos los caballeros");
-		System.out.println(MODIFICAR_CABALLERO + "Modificar caballero");
-		System.out.println(ELIMINAR_CABALLERO + "Eliminar caballero");
+		System.out.println(INSERTAR_CABALLERO + "-Insertar un caballero");
+		System.out.println(MOSTRAR_CABALLERO + "-Mostrar un caballero");
+		System.out.println(MOSTRAR_CABALLEROS + "-Mostrar todos los caballeros");
+		System.out.println(MODIFICAR_CABALLERO + "-Modificar caballero");
+		System.out.println(ELIMINAR_CABALLERO + "-Eliminar caballero");
 	}
 }
