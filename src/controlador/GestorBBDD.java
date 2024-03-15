@@ -29,9 +29,6 @@ public class GestorBBDD extends Conector {
 			
 			
 
-			pst.execute();
-			
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
