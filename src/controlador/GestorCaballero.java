@@ -1,10 +1,10 @@
 package controlador;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Modelo.Caballero;
-import vista.Formulario;
-import vista.Menu;
+import vista.*;
 
 public class GestorCaballero {
 
@@ -27,12 +27,22 @@ public class GestorCaballero {
 				break;
 
 			case Menu.MOSTRAR_CABALLERO:
+				gestorBBDD.conectar();
+				int idCaballero = Formulario.pedirIdCaballero(scan);
+				Caballero caballero=gestorBBDD.getCapalleroId(idCaballero);
+				Visor.mostrarCaballero(caballero);
+				gestorBBDD.cerrar();
 				break;
 
 			case Menu.MOSTRAR_CABALLEROS:
+				gestorBBDD.conectar();
+				ArrayList <Caballero>caballeros=gestorBBDD.getCaballeros();
+				Visor.mostrarCaballeros(caballeros);
+				gestorBBDD.cerrar();
 				break;
 
 			case Menu.MODIFICAR_CABALLERO:
+
 				break;
 
 			case Menu.ELIMINAR_CABALLERO:

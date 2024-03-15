@@ -19,7 +19,7 @@ public class GestorCrud {
 
 			switch (option) {
 			case Menu.GESTIONAR_CABALLEROS:
-				
+				GestorCaballero.run(scan);
 				break;
 
 			case Menu.GESTIONAR_ARMAS:
