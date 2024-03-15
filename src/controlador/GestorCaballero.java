@@ -17,12 +17,13 @@ public class GestorCaballero {
 			System.out.println("Introduzca la opcion");
 			option = Integer.parseInt(scan.nextLine());
 			GestorBBDD gestorBBDD = new GestorBBDD();
+			
 
 			switch (option) {
 			case Menu.INSERTAR_CABALLERO:
-				Formulario.pedirDatosCaballero(scan);
-
-				gestorBBDD.insertarCaballero();
+				gestorBBDD.conectar();
+				Caballero caballero = Formulario.pedirDatosCaballero(scan);
+				gestorBBDD.insertarCaballero(caballero);
 
 				break;
 
