@@ -2,9 +2,15 @@ package vista;
 
 public class Menu {
 
-	public static final int GESTOR = 1;
+	public static final int GESTOR =1;
 	public static final int BATALLA = 2;
 	public static final int MAS_INFORMACION = 3;
+	
+	public static final int GESTIONAR_CABALLEROS = 1;
+	public static final int GESTIONAR_ARMAS = 2;
+	public static final int GESTIONAR_ESCUDOS = 3;
+	public static final int GESTIONAR_ESCUDEROS = 4;
+	public static final int GESTIONAR_CABALLOS = 5;
 
 	public static final int INSERTAR_CABALLERO = 1;
 	public static final int MOSTRAR_CABALLERO = 2;
@@ -17,10 +23,21 @@ public class Menu {
 	public static void mostrarMenuPrincipal() {
 
 		System.out.println("--Menu Principal--");
-		System.out.println(GESTOR + "-Creacion");
+		System.out.println(GESTOR + "-Gestor");
 		System.out.println(BATALLA + "-Batalla de caballeros");
 		System.out.println(MAS_INFORMACION + "-Informacion adicional");
 	}
+	
+	public static void mostrarMenuCrud() {
+		System.out.println("--Menu Crud--");
+		System.out.println(GESTIONAR_CABALLEROS + "-Gestionar caballeros");
+		System.out.println(GESTIONAR_ARMAS + "-Gestionar armas");
+		System.out.println(GESTIONAR_ESCUDOS + "-Gestionar escudos");
+		System.out.println(GESTIONAR_ESCUDEROS + "-Gestionar escuderos");
+		System.out.println(GESTIONAR_CABALLOS + "-Gestionar caballos");
+		
+	}
+	
 
 	public static void mostrarMenuCaballeros() {
 
