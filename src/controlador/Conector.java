@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conector {
-	protected Connection con;
+	protected static Connection con;
 
 	private String host = "localhost";
 	private String bbdd = "caballeros";

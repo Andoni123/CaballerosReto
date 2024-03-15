@@ -1,5 +1,6 @@
 package controlador;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import vista.Formulario;
@@ -7,7 +8,7 @@ import vista.Menu;
 
 public class GestorCrud {
 	
-	public static void run(Scanner scan) {
+	public static void run(Scanner scan) throws SQLException {
 		
 		int option;
 
@@ -20,7 +21,6 @@ public class GestorCrud {
 			switch (option) {
 			case Menu.GESTIONAR_CABALLEROS:
 				GestorCaballero.run(scan);
-				
 				break;
 
 			case Menu.GESTIONAR_ARMAS:
