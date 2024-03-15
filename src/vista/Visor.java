@@ -17,5 +17,22 @@ public class Visor {
 
 		System.out.println(caballero.toString());
 	}
+	
+	public static void caballeroInsertado() {
+		
+		System.out.println("Caballero insertado");
+	}
+	
+	public static void caballeroModificado() {
+		
+		System.out.println("Caballero modificado");
+	}
+	
+	public static void caballeroEliminado() {
+		
+		System.out.println("Caballero eliminado");
+	}
+	
+	
 
 }
