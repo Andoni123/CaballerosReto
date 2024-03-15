@@ -1,14 +1,17 @@
 package controlador;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Modelo.Caballero;
+import Modelo.*;
+import controlador.*;
+
 import vista.*;
 
 public class GestorCaballero {
 
-	public static void run(Scanner scan) {
+	public static void run(Scanner scan) throws SQLException {
 
 		int option;
 
@@ -42,7 +45,13 @@ public class GestorCaballero {
 				break;
 
 			case Menu.MODIFICAR_CABALLERO:
-
+				gestorBBDD.conectar();
+				caballeros = GestorBBDD.getCaballeros();
+				Visor.mostrarCaballeros(caballeros);
+				idCaballero = Formulario.pedirIdCaballero(scan);
+				caballero = Formulario.pedirDatosCaballero(scan);
+				gestorBBDD.modificarCaballero(caballero, idCaballero);
+				gestorBBDD.cerrar();
 				break;
 
 			case Menu.ELIMINAR_CABALLERO:

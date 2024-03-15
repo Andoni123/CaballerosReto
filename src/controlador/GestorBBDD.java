@@ -16,7 +16,7 @@ public class GestorBBDD extends Conector {
 
 	}
 
-	public ArrayList<Caballero> getCaballeros() {
+	public static ArrayList<Caballero> getCaballeros() {
 
 		ArrayList<Caballero> caballeros = new ArrayList<Caballero>();
 		String sql = "SELECT * FROM caballeros";
@@ -62,7 +62,7 @@ public class GestorBBDD extends Conector {
 		return caballero;
 	}
 
-	private void rellenarCaballero(ResultSet rs, Caballero caballero) throws SQLException {
+	private static void rellenarCaballero(ResultSet rs, Caballero caballero) throws SQLException {
 		caballero.setIdEscudero(rs.getInt("idEscudo"));
 		caballero.setIdArma(rs.getInt("idArma"));
 		caballero.setIdEscudo(rs.getInt("idEscudo"));
@@ -70,6 +70,32 @@ public class GestorBBDD extends Conector {
 		caballero.setFuerzaLucha(rs.getInt("fuerzaLucha"));
 		caballero.setHabilidad(rs.getInt("habilidad"));
 		caballero.setIdCaballo(rs.getInt("idCaballo"));
+	}
+
+	public static  Caballero modificarCaballero(Caballero caballero, int idCaballero) throws SQLException {
+		
+		String sql ="UPDATE caballeros SET idEscudero=?,idArma=?,idEscudo=?,nombre=?,fuerzaLucha=?,habilidad=?,idCaballo=? WHERE idCaballero=?";
+		PreparedStatement pst = con.prepareStatement(sql);
+
+					try {
+						pst.setInt(1, caballero.getIdEscudero());
+						pst.setInt(2, caballero.getIdArma());
+						pst.setInt(3, caballero.getIdEscudo());
+						pst.setString(4, caballero.getNombre());
+						pst.setInt(5, caballero.getFuerzaLucha());
+						pst.setInt(6, caballero.getHabilidad());
+						pst.setInt(7, caballero.getIdCaballo());
+						pst.setInt(8, idCaballero);
+		
+					
+						pst.execute();
+		
+					} catch (SQLException e) {
+						System.out.println("Peto en modificarCaballero");
+						e.printStackTrace();
+					}
+		
+				return caballero;
 	}
 
 }
