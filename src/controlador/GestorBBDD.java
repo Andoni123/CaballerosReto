@@ -1,5 +1,6 @@
 package controlador;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,63 +11,55 @@ import Modelo.Caballero;
 public class GestorBBDD extends Conector {
 
 	public void insertarCaballero() {
-		
+
 		String sql = "INSERT INTO `caballeros`(`idCaballero`, `idEcudero`, `idArma`, `idEscudo`, `Nombre`, `FuerzaLucha`, `Habilidad`, `idCaballo`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')";
-		
-		
+
 	}
 
-	public  ArrayList<Caballero> getCaballeros() {
-		
-		ArrayList <Caballero> caballeros=new ArrayList<Caballero>();
-		 String sql = "SELECT * FROM caballeros";
-		 
-		 try {
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(sql);
+	public ArrayList<Caballero> getCaballeros() {
 
-				while (rs.next()) {
-					Caballero caballero = new Caballero() ;
+		ArrayList<Caballero> caballeros = new ArrayList<Caballero>();
+		String sql = "SELECT * FROM caballeros";
 
-					rellenarCaballero(rs, caballero);
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
 
-					caballeros.add(caballero);
-				}
-			} catch (SQLException e) {
-				System.out.println("te revento ver caballeros maquina");
-				e.printStackTrace();
+			while (rs.next()) {
+				Caballero caballero = new Caballero();
+
+				rellenarCaballero(rs, caballero);
+
+				caballeros.add(caballero);
 			}
+		} catch (SQLException e) {
+			System.out.println("te revento ver caballeros maquina");
+			e.printStackTrace();
+		}
 
-			return caballeros;
+		return caballeros;
 	}
 
-	public ArrayList <Caballero> getCapalleroId(int idCaballero) {
-		
-		ArrayList <Caballero> caballeros=new ArrayList<Caballero>();
-		 String sql = "SELECT * FROM caballeros Where idCaballero = ?";
-		 
-		 try {
-			 /*
-			  * PreparedStattemen pst = con.PrepareStatement(sql)
-			  * pst.setInt(1,idCaballero)
-			  * ResusltSet rs = pst.executequery.
-			  */
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(sql);
+	public Caballero getCapalleroId(int idCaballero) {
 
-				while (rs.next()) {
-					Caballero caballero = new Caballero() ;
+		Caballero caballero=new Caballero();
+		String sql = "SELECT * FROM caballeros Where idCaballero = ?";
 
-					rellenarCaballero(rs, caballero);
+		try {
 
-					caballeros.add(caballero);
-				}
-			} catch (SQLException e) {
-				System.out.println("te revento ver caballeros maquina");
-				e.printStackTrace();
-			}
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idCaballero);
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			rellenarCaballero(rs, caballero);
 
-			return caballeros;
+			
+		} catch (SQLException e) {
+			System.out.println("te reventó ver caballeros maquina");
+			e.printStackTrace();
+		}
+
+		return caballero;
 	}
 
 	private void rellenarCaballero(ResultSet rs, Caballero caballero) throws SQLException {
@@ -78,7 +71,5 @@ public class GestorBBDD extends Conector {
 		caballero.setHabilidad(rs.getInt("habilidad"));
 		caballero.setIdCaballo(rs.getInt("idCaballo"));
 	}
-		
-	
 
 }
