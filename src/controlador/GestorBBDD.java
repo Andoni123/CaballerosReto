@@ -116,4 +116,25 @@ public class GestorBBDD extends Conector {
 
 	}
 
+	public void eliminarCaballero(int idCaballero) {
+
+		String sentenciaSql = "DELETE FROM `caballeros` WHERE idCaballero = ?";
+
+		PreparedStatement pst;
+
+		try {
+
+			pst = con.prepareStatement(sentenciaSql);
+			
+			pst.setInt(1, idCaballero);
+
+			pst.execute();
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }
