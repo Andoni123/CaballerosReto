@@ -40,14 +40,14 @@ public class GestorArmas {
 				gestorBBDD.cerrar();
 				break;
 
-		/*	case Menu.MOSTRAR_VARIOS:
+			case Menu.MOSTRAR_VARIOS:
 				gestorBBDD.conectar();
-				ArrayList <Caballero>caballeros=gestorBBDD.getCaballeros();
-				Visor.mostrarCaballeros(caballeros);
+				ArrayList <Arma>armas=gestorBBDD.getArmas();
+				Visor.mostrarArmas(armas);
 				gestorBBDD.cerrar();
 				break;
 
-			case Menu.MODIFICAR:
+				/*case Menu.MODIFICAR:
 				gestorBBDD.conectar();
 				caballeros = GestorBBDD.getCaballeros();
 				Visor.mostrarCaballeros(caballeros);

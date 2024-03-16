@@ -39,7 +39,7 @@ public class Menu {
 		System.out.println(GESTIONAR_ESCUDOS + "-Gestionar escudos");
 		System.out.println(GESTIONAR_ESCUDEROS + "-Gestionar escuderos");
 		System.out.println(GESTIONAR_CABALLOS + "-Gestionar caballos");
-		System.out.println(SALIR_CRUD + "Salir");
+		System.out.println(SALIR_CRUD + "-Salir");
 		
 	}
 	
@@ -52,7 +52,7 @@ public class Menu {
 		System.out.println(MOSTRAR_VARIOS + "-Mostrar todos los caballeros");
 		System.out.println(MODIFICAR + "-Modificar caballero");
 		System.out.println(ELIMINAR + "-Eliminar caballero");
-		System.out.println(SALIR + "Salir");
+		System.out.println(SALIR + "-Salir");
 	}
 	
 	public static void mostrarMenuArmas() {
@@ -60,9 +60,9 @@ public class Menu {
 		System.out.println("--Menu Caballeros");
 		System.out.println(INSERTAR + "-Insertar un arma");
 		System.out.println(MOSTRAR_UNO + "-Mostrar un arma");
-		System.out.println(MOSTRAR_VARIOS + "-Mostrar todos los arma");
+		System.out.println(MOSTRAR_VARIOS + "-Mostrar todas las armas");
 		System.out.println(MODIFICAR + "-Modificar arma");
 		System.out.println(ELIMINAR + "-Eliminar arma");
-		System.out.println(SALIR + "Salir");
+		System.out.println(SALIR + "-Salir");
 	}
 }

@@ -44,6 +44,13 @@ public class Visor {
 		System.out.println(arma);
 		
 	}
+
+	public static void mostrarArmas(ArrayList<Arma> armas) {
+		
+		for (Arma arma : armas) {
+			System.out.println(arma.toString());
+		}
+	}
 	
 	
 

@@ -198,4 +198,29 @@ public class GestorBBDD extends Conector {
 	
 	}
 
+	public ArrayList<Arma> getArmas() {
+		
+		ArrayList<Arma> armas = new ArrayList<Arma>();
+		String sql = "SELECT * FROM arma";
+
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while (rs.next()) {
+				Arma arma = new Arma();
+
+				rellenarArma(rs, arma);
+
+				armas.add(arma);
+			}
+		} catch (SQLException e) {
+			System.out.println("te revento ver caballeros maquina");
+			e.printStackTrace();
+		}
+
+		return armas;
+		
+	}
+
 }
