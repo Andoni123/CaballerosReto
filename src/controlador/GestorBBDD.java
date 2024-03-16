@@ -81,6 +81,7 @@ public class GestorBBDD extends Conector {
 	}
 
 	private static void rellenarCaballero(ResultSet rs, Caballero caballero) throws SQLException {
+		caballero.setIdCaballero(rs.getInt("idCaballero"));
 		caballero.setIdEscudero(rs.getInt("idEscudo"));
 		caballero.setIdArma(rs.getInt("idArma"));
 		caballero.setIdEscudo(rs.getInt("idEscudo"));
