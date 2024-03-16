@@ -47,24 +47,24 @@ public class GestorArmas {
 				gestorBBDD.cerrar();
 				break;
 
-				/*case Menu.MODIFICAR:
+				case Menu.MODIFICAR:
 				gestorBBDD.conectar();
-				caballeros = GestorBBDD.getCaballeros();
-				Visor.mostrarCaballeros(caballeros);
-				idCaballero = Formulario.pedirIdCaballero(scan);
-				caballero = Formulario.pedirDatosCaballero(scan);
-				gestorBBDD.modificarCaballero(caballero, idCaballero);
-				Visor.caballeroModificado();
+				armas = GestorBBDD.getArmas();
+				Visor.mostrarArmas(armas);
+				idArma = Formulario.pedirIdCaballero(scan);
+				arma = Formulario.pedirDatosArma(scan);
+				gestorBBDD.modificarArma(arma, idArma);
+				Visor.armaModificada();
 				gestorBBDD.cerrar();
 				break;
 
 			case Menu.ELIMINAR:
 				gestorBBDD.conectar();
-				idCaballero = Formulario.pedirIdCaballero(scan);
-				gestorBBDD.eliminarCaballero(idCaballero);
-				Visor.caballeroEliminado();
+				idArma = Formulario.pedirIdArma(scan);
+				gestorBBDD.eliminarArma(idArma);
+				Visor.armaEliminada();
 				gestorBBDD.cerrar();
-				break;*/
+				break;
 
 			default:
 				break;

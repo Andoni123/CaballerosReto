@@ -198,7 +198,7 @@ public class GestorBBDD extends Conector {
 	
 	}
 
-	public ArrayList<Arma> getArmas() {
+	public static ArrayList<Arma> getArmas() {
 		
 		ArrayList<Arma> armas = new ArrayList<Arma>();
 		String sql = "SELECT * FROM arma";
@@ -221,6 +221,51 @@ public class GestorBBDD extends Conector {
 
 		return armas;
 		
+	}
+
+	public static Arma modificarArma(Arma arma, int idArma) throws SQLException {
+		
+		String sql = "UPDATE arma SET Daño=?,Durabilidad=?,Velocidad=?,Material=?,Nombre=? WHERE idArma=?";
+		PreparedStatement pst = con.prepareStatement(sql);
+
+		try {
+			pst.setInt(1, arma.getDaño());
+			pst.setInt(2, arma.getDurabilidad());
+			pst.setInt(3, arma.getVelocidad());
+			pst.setString(4, arma.getMaterial());
+			pst.setString(5, arma.getNombre());
+			pst.setInt(6, idArma);
+
+			pst.execute();
+
+		} catch (SQLException e) {
+			System.out.println("Peto en modificarCaballero");
+			e.printStackTrace();
+		}
+
+		return arma;
+		
+	}
+
+	public void eliminarArma(int idArma) {
+		
+		String sentenciaSql = "DELETE FROM `arma` WHERE idArma = ?";
+
+		PreparedStatement pst;
+
+		try {
+
+			pst = con.prepareStatement(sentenciaSql);
+			
+			pst.setInt(1, idArma);
+
+			pst.execute();
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

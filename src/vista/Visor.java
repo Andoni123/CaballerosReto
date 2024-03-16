@@ -51,6 +51,18 @@ public class Visor {
 			System.out.println(arma.toString());
 		}
 	}
+
+	public static void armaModificada() {
+		
+		System.out.println("arma modificada");
+		
+	}
+
+	public static void armaEliminada() {
+		
+		System.out.println("Arma eliminada");
+		
+	}
 	
 	
 

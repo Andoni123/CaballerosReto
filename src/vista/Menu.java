@@ -52,7 +52,7 @@ public class Menu {
 		System.out.println(MOSTRAR_VARIOS + "-Mostrar todos los caballeros");
 		System.out.println(MODIFICAR + "-Modificar caballero");
 		System.out.println(ELIMINAR + "-Eliminar caballero");
-		System.out.println(SALIR + "-Salir");
+		System.out.println(SALIR_MENU + "-Salir");
 	}
 	
 	public static void mostrarMenuArmas() {
@@ -63,6 +63,6 @@ public class Menu {
 		System.out.println(MOSTRAR_VARIOS + "-Mostrar todas las armas");
 		System.out.println(MODIFICAR + "-Modificar arma");
 		System.out.println(ELIMINAR + "-Eliminar arma");
-		System.out.println(SALIR + "-Salir");
+		System.out.println(SALIR_MENU + "-Salir");
 	}
 }
