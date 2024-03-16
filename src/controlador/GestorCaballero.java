@@ -23,7 +23,7 @@ public class GestorCaballero {
 			
 
 			switch (option) {
-			case Menu.INSERTAR_CABALLERO:
+			case Menu.INSERTAR:
 				gestorBBDD.conectar();
 				Caballero caballero = Formulario.pedirDatosCaballero(scan);
 				gestorBBDD.insertarCaballero(caballero);
@@ -31,7 +31,7 @@ public class GestorCaballero {
 				gestorBBDD.cerrar();
 				break;
 
-			case Menu.MOSTRAR_CABALLERO:
+			case Menu.MOSTRAR_UNO:
 				gestorBBDD.conectar();
 				int idCaballero = Formulario.pedirIdCaballero(scan);
 				 caballero=gestorBBDD.getCapalleroId(idCaballero);
@@ -39,14 +39,14 @@ public class GestorCaballero {
 				gestorBBDD.cerrar();
 				break;
 
-			case Menu.MOSTRAR_CABALLEROS:
+			case Menu.MOSTRAR_VARIOS:
 				gestorBBDD.conectar();
 				ArrayList <Caballero>caballeros=gestorBBDD.getCaballeros();
 				Visor.mostrarCaballeros(caballeros);
 				gestorBBDD.cerrar();
 				break;
 
-			case Menu.MODIFICAR_CABALLERO:
+			case Menu.MODIFICAR:
 				gestorBBDD.conectar();
 				caballeros = GestorBBDD.getCaballeros();
 				Visor.mostrarCaballeros(caballeros);
@@ -57,7 +57,7 @@ public class GestorCaballero {
 				gestorBBDD.cerrar();
 				break;
 
-			case Menu.ELIMINAR_CABALLERO:
+			case Menu.ELIMINAR:
 				gestorBBDD.conectar();
 				idCaballero = Formulario.pedirIdCaballero(scan);
 				gestorBBDD.eliminarCaballero(idCaballero);

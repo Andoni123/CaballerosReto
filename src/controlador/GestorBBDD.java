@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import Modelo.Arma;
 import Modelo.Caballero;
 
 public class GestorBBDD extends Conector {
@@ -128,6 +130,134 @@ public class GestorBBDD extends Conector {
 			pst = con.prepareStatement(sentenciaSql);
 			
 			pst.setInt(1, idCaballero);
+
+			pst.execute();
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void insertarArma (Arma arma) {
+		
+		String sql = "INSERT INTO `arma`(`Daño`, `Durabilidad`, `Velocidad`, `Material`, `Nombre`) VALUES (?,?,?,?,?)";
+
+		PreparedStatement pst;
+
+		try {
+
+			pst = con.prepareStatement(sql);
+
+			pst.setInt(1, arma.getDaño());
+			pst.setInt(2, arma.getDurabilidad());
+			pst.setInt(3, arma.getVelocidad());
+			pst.setString(4, arma.getMaterial());
+			pst.setString(5, arma.getNombre());
+			
+
+			pst.execute();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public Arma getArmaId(int idArma) {
+		
+		Arma arma = new Arma();
+		String sql = "SELECT * FROM arma Where idArma = ?";
+
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idArma);
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			rellenarArma(rs, arma);
+
+		} catch (SQLException e) {
+			System.out.println("te reventó ver armas maquina");
+			e.printStackTrace();
+		}
+
+		return arma;
+		
+	}
+	
+	private static void rellenarArma(ResultSet rs, Arma arma) throws SQLException {
+		arma.setIdArma(rs.getInt("idArma"));
+		arma.setDaño(rs.getInt("Daño"));
+		arma.setDurabilidad(rs.getInt("Durabilidad"));
+		arma.setVelocidad(rs.getInt("Velocidad"));
+		arma.setMaterial(rs.getString("Material"));
+		arma.setNombre(rs.getString("Nombre"));
+	
+	}
+
+	public static ArrayList<Arma> getArmas() {
+		
+		ArrayList<Arma> armas = new ArrayList<Arma>();
+		String sql = "SELECT * FROM arma";
+
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while (rs.next()) {
+				Arma arma = new Arma();
+
+				rellenarArma(rs, arma);
+
+				armas.add(arma);
+			}
+		} catch (SQLException e) {
+			System.out.println("te revento ver caballeros maquina");
+			e.printStackTrace();
+		}
+
+		return armas;
+		
+	}
+
+	public static Arma modificarArma(Arma arma, int idArma) throws SQLException {
+		
+		String sql = "UPDATE arma SET Daño=?,Durabilidad=?,Velocidad=?,Material=?,Nombre=? WHERE idArma=?";
+		PreparedStatement pst = con.prepareStatement(sql);
+
+		try {
+			pst.setInt(1, arma.getDaño());
+			pst.setInt(2, arma.getDurabilidad());
+			pst.setInt(3, arma.getVelocidad());
+			pst.setString(4, arma.getMaterial());
+			pst.setString(5, arma.getNombre());
+			pst.setInt(6, idArma);
+
+			pst.execute();
+
+		} catch (SQLException e) {
+			System.out.println("Peto en modificarCaballero");
+			e.printStackTrace();
+		}
+
+		return arma;
+		
+	}
+
+	public void eliminarArma(int idArma) {
+		
+		String sentenciaSql = "DELETE FROM `arma` WHERE idArma = ?";
+
+		PreparedStatement pst;
+
+		try {
+
+			pst = con.prepareStatement(sentenciaSql);
+			
+			pst.setInt(1, idArma);
 
 			pst.execute();
 			

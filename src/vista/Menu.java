@@ -15,12 +15,12 @@ public class Menu {
 	public static final int SALIR_CRUD = 6;
 	
 
-	public static final int INSERTAR_CABALLERO = 1;
-	public static final int MOSTRAR_CABALLERO = 2;
-	public static final int MOSTRAR_CABALLEROS = 3;
-	public static final int MODIFICAR_CABALLERO = 4;
-	public static final int ELIMINAR_CABALLERO = 5;
-	public static final int SALIR_CABALLERO = 6;
+	public static final int INSERTAR = 1;
+	public static final int MOSTRAR_UNO= 2;
+	public static final int MOSTRAR_VARIOS = 3;
+	public static final int MODIFICAR = 4;
+	public static final int ELIMINAR = 5;
+	public static final int SALIR_MENU = 6;
 
 	
 
@@ -39,7 +39,7 @@ public class Menu {
 		System.out.println(GESTIONAR_ESCUDOS + "-Gestionar escudos");
 		System.out.println(GESTIONAR_ESCUDEROS + "-Gestionar escuderos");
 		System.out.println(GESTIONAR_CABALLOS + "-Gestionar caballos");
-		System.out.println(SALIR_CRUD + "Salir");
+		System.out.println(SALIR_CRUD + "-Salir");
 		
 	}
 	
@@ -47,11 +47,22 @@ public class Menu {
 	public static void mostrarMenuCaballeros() {
 
 		System.out.println("--Menu Caballeros");
-		System.out.println(INSERTAR_CABALLERO + "-Insertar un caballero");
-		System.out.println(MOSTRAR_CABALLERO + "-Mostrar un caballero");
-		System.out.println(MOSTRAR_CABALLEROS + "-Mostrar todos los caballeros");
-		System.out.println(MODIFICAR_CABALLERO + "-Modificar caballero");
-		System.out.println(ELIMINAR_CABALLERO + "-Eliminar caballero");
-		System.out.println(SALIR_CABALLERO + "Salir");
+		System.out.println(INSERTAR + "-Insertar un caballero");
+		System.out.println(MOSTRAR_UNO + "-Mostrar un caballero");
+		System.out.println(MOSTRAR_VARIOS + "-Mostrar todos los caballeros");
+		System.out.println(MODIFICAR + "-Modificar caballero");
+		System.out.println(ELIMINAR + "-Eliminar caballero");
+		System.out.println(SALIR_MENU + "-Salir");
+	}
+	
+	public static void mostrarMenuArmas() {
+
+		System.out.println("--Menu Caballeros");
+		System.out.println(INSERTAR + "-Insertar un arma");
+		System.out.println(MOSTRAR_UNO + "-Mostrar un arma");
+		System.out.println(MOSTRAR_VARIOS + "-Mostrar todas las armas");
+		System.out.println(MODIFICAR + "-Modificar arma");
+		System.out.println(ELIMINAR + "-Eliminar arma");
+		System.out.println(SALIR_MENU + "-Salir");
 	}
 }

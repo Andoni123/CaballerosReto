@@ -24,6 +24,7 @@ public class GestorCrud {
 				break;
 
 			case Menu.GESTIONAR_ARMAS:
+				GestorArmas.run(scan);
 				break;
 
 			case Menu.GESTIONAR_ESCUDOS:
