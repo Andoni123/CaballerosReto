@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import Modelo.Arma;
 import Modelo.Caballero;
 
 public class GestorBBDD extends Conector {
@@ -136,6 +138,64 @@ public class GestorBBDD extends Conector {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void insertarArma (Arma arma) {
+		
+		String sql = "INSERT INTO `arma`(`Daño`, `Durabilidad`, `Velocidad`, `Material`, `Nombre`) VALUES (?,?,?,?,?)";
+
+		PreparedStatement pst;
+
+		try {
+
+			pst = con.prepareStatement(sql);
+
+			pst.setInt(1, arma.getDaño());
+			pst.setInt(2, arma.getDurabilidad());
+			pst.setInt(3, arma.getVelocidad());
+			pst.setString(4, arma.getMaterial());
+			pst.setString(5, arma.getNombre());
+			
+
+			pst.execute();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public Arma getArmaId(int idArma) {
+		
+		Arma arma = new Arma();
+		String sql = "SELECT * FROM arma Where idArma = ?";
+
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idArma);
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			rellenarArma(rs, arma);
+
+		} catch (SQLException e) {
+			System.out.println("te reventó ver armas maquina");
+			e.printStackTrace();
+		}
+
+		return arma;
+		
+	}
+	
+	private static void rellenarArma(ResultSet rs, Arma arma) throws SQLException {
+		arma.setIdArma(rs.getInt("idArma"));
+		arma.setDaño(rs.getInt("Daño"));
+		arma.setDurabilidad(rs.getInt("Durabilidad"));
+		arma.setVelocidad(rs.getInt("Velocidad"));
+		arma.setMaterial(rs.getString("Material"));
+		arma.setNombre(rs.getString("Nombre"));
+	
 	}
 
 }

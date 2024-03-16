@@ -2,6 +2,7 @@ package vista;
 
 import java.util.ArrayList;
 
+import Modelo.Arma;
 import Modelo.Caballero;
 
 public class Visor {
@@ -31,6 +32,17 @@ public class Visor {
 	public static void caballeroEliminado() {
 		
 		System.out.println("Caballero eliminado");
+	}
+
+	public static void armaInsertada() {
+		System.out.println("Arma insertada");
+		
+	}
+
+	public static void mostrarArma(Arma arma) {
+		
+		System.out.println(arma);
+		
 	}
 	
 	

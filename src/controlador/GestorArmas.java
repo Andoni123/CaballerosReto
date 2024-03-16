@@ -4,19 +4,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Modelo.*;
-import controlador.*;
+import Modelo.Arma;
+import Modelo.Caballero;
+import vista.Formulario;
+import vista.Menu;
+import vista.Visor;
 
-import vista.*;
-
-public class GestorCaballero {
+public class GestorArmas {
 
 	public static void run(Scanner scan) throws SQLException {
-
+		
 		int option;
 
 		do {
-			Menu.mostrarMenuCaballeros();
+			Menu.mostrarMenuArmas();
 			System.out.println("Introduzca la opcion");
 			option = Integer.parseInt(scan.nextLine());
 			GestorBBDD gestorBBDD = new GestorBBDD();
@@ -25,21 +26,21 @@ public class GestorCaballero {
 			switch (option) {
 			case Menu.INSERTAR:
 				gestorBBDD.conectar();
-				Caballero caballero = Formulario.pedirDatosCaballero(scan);
-				gestorBBDD.insertarCaballero(caballero);
-				Visor.caballeroInsertado();
+				Arma arma = Formulario.pedirDatosArma(scan);
+				gestorBBDD.insertarArma(arma);
+				Visor.armaInsertada();
 				gestorBBDD.cerrar();
 				break;
 
 			case Menu.MOSTRAR_UNO:
 				gestorBBDD.conectar();
-				int idCaballero = Formulario.pedirIdCaballero(scan);
-				 caballero=gestorBBDD.getCapalleroId(idCaballero);
-				Visor.mostrarCaballero(caballero);
+				int idArma = Formulario.pedirIdArma(scan);
+				 arma=gestorBBDD.getArmaId(idArma);
+				Visor.mostrarArma(arma);
 				gestorBBDD.cerrar();
 				break;
 
-			case Menu.MOSTRAR_VARIOS:
+		/*	case Menu.MOSTRAR_VARIOS:
 				gestorBBDD.conectar();
 				ArrayList <Caballero>caballeros=gestorBBDD.getCaballeros();
 				Visor.mostrarCaballeros(caballeros);
@@ -63,7 +64,7 @@ public class GestorCaballero {
 				gestorBBDD.eliminarCaballero(idCaballero);
 				Visor.caballeroEliminado();
 				gestorBBDD.cerrar();
-				break;
+				break;*/
 
 			default:
 				break;
@@ -72,4 +73,5 @@ public class GestorCaballero {
 		} while (option != 0);
 
 	}
+	
 }
