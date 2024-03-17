@@ -523,6 +523,126 @@ public void insertarEscudo (Escudo escudo) {
 			e.printStackTrace();
 		}
 	} 
+	
+	public void insertarCaballo(Caballo caballo) {
+
+		String sql = "INSERT INTO `caballo`(`Velocidad`, `idCaballero`, `Color`) VALUES (?,?,?)";
+
+		PreparedStatement pst;
+
+		try {
+
+			pst = con.prepareStatement(sql);
+
+			pst.setInt(1, caballo.getVelocidad());
+			pst.setInt(2, caballo.getIdCaballero());
+			pst.setString(3, caballo.getColor());
+			
+
+			pst.execute();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static ArrayList<Caballo> getCaballos() {
+
+		ArrayList<Caballo> caballos = new ArrayList<Caballo>();
+		String sql = "SELECT * FROM caballo";
+
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while (rs.next()) {
+				Caballo caballo = new Caballo();
+
+				rellenarCaballo(rs, caballo);
+
+				caballos.add(caballo);
+			}
+		} catch (SQLException e) {
+			System.out.println("te revento ver caballeros maquina");
+			e.printStackTrace();
+		}
+
+		return caballos;
+	}
+
+	public Caballo getCaballoId(int idCaballo) {
+
+		Caballo caballo=new Caballo();
+		String sql = "SELECT * FROM caballo Where idCaballo = ?";
+
+
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idCaballo);
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			rellenarCaballo(rs, caballo);
+
+		} catch (SQLException e) {
+			System.out.println("te reventó ver caballeros maquina");
+			e.printStackTrace();
+		}
+
+		return caballo;
+	}
+
+	private static void rellenarCaballo(ResultSet rs, Caballo caballo) throws SQLException {
+		
+		caballo.setIdCaballo(rs.getInt("idCaballo"));
+		caballo.setVelocidad(rs.getInt("velocidad"));
+		caballo.setIdCaballero(rs.getInt("idCaballero"));
+		caballo.setColor(rs.getString("color"));
+	}
+
+	public static Caballo modificarCaballo(Caballo caballo, int idCaballo) throws SQLException {
+
+		String sql = "UPDATE caballo SET velocidad=?,idCaballo=?,color=? WHERE idCaballo=?";
+		PreparedStatement pst = con.prepareStatement(sql);
+
+		try {
+			pst.setInt(1, caballo.getVelocidad());
+			pst.setInt(2, caballo.getIdCaballero());
+			pst.setString(3, caballo.getColor());
+			pst.setInt(4, idCaballo);
+
+			pst.execute();
+
+		} catch (SQLException e) {
+			System.out.println("Peto en modificarCaballero");
+			e.printStackTrace();
+		}
+
+		return caballo;
+
+	}
+
+	public void eliminarCaballo(int idCaballo) {
+
+		String sentenciaSql = "DELETE FROM `caballo` WHERE idCaballo = ?";
+
+		PreparedStatement pst;
+
+		try {
+
+			pst = con.prepareStatement(sentenciaSql);
+			
+			pst.setInt(1, idCaballo);
+
+			pst.execute();
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 
 

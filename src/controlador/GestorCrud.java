@@ -36,6 +36,7 @@ public class GestorCrud {
 				break;
 
 			case Menu.GESTIONAR_CABALLOS:
+				GestorCaballos.run(scan);
 				break;
 
 			default:

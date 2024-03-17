@@ -87,4 +87,15 @@ public class Menu {
 		System.out.println(ELIMINAR + "-Eliminar escudero");
 		System.out.println(SALIR_MENU + "-Salir");
 	}
+
+	public static void mostrarMenuCaballos() {
+		
+		System.out.println("--Menu Caballos");
+		System.out.println(INSERTAR + "-Insertar un caballo");
+		System.out.println(MOSTRAR_UNO + "-Mostrar un caballo");
+		System.out.println(MOSTRAR_VARIOS + "-Mostrar todos los caballos");
+		System.out.println(MODIFICAR + "-Modificar caballo");
+		System.out.println(ELIMINAR + "-Eliminar caballo");
+		System.out.println(SALIR_MENU + "-Salir");
+	}
 }
