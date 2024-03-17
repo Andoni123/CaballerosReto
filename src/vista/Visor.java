@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import Modelo.Arma;
 import Modelo.Caballero;
+import Modelo.Escudero;
+import Modelo.Escudo;
 
 public class Visor {
 
@@ -61,6 +63,66 @@ public class Visor {
 	public static void armaEliminada() {
 		
 		System.out.println("Arma eliminada");
+		
+	}
+
+	public static void escudoInsertado() {
+		
+		System.out.println("Escudo insertado");
+		
+	}
+
+	public static void mostrarEscudo(Escudo escudo) {
+	
+		System.out.println(escudo);
+		
+	}
+
+	public static void mostrarEscudos(ArrayList<Escudo> escudos) {
+		
+		for (Escudo escudo : escudos) {
+			System.out.println(escudo.toString());
+		}
+	}
+
+	public static void escudoModificado() {
+		
+		System.out.println("Escudo modificado");
+		
+	}
+
+	public static void escudoEliminado() {
+		
+		System.out.println("Escudo eliminado");
+		
+	}
+
+	public static void escuderoInsertado() {
+		
+		System.out.println("Escudero insertado");
+		
+	}
+
+	public static void mostrarEscudero(Escudero escudero) {
+		
+		System.out.println(escudero);
+		
+	}
+
+	public static void mostrarEscuderos(ArrayList<Escudero> escuderos) {
+		
+		for (Escudero escudero : escuderos) {
+			System.out.println(escudero.toString());
+		}
+	}
+
+	public static void escuderoModificado() {
+		System.out.println("Escudero Modificado");
+		
+	}
+
+	public static void escuderoEliminado() {
+		System.out.println("Escudero eliminado");
 		
 	}
 	

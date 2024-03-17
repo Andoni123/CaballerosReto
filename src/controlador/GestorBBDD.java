@@ -268,7 +268,261 @@ public class GestorBBDD extends Conector {
 			e.printStackTrace();
 		}
 	}
+	
+	
+public void insertarEscudo (Escudo escudo) {
+		
+		String sql = "INSERT INTO `escudo`(`Defensa`, `Durabilidad`, `Material`) VALUES (?,?,?)";
 
+		PreparedStatement pst;
+
+		try {
+
+			pst = con.prepareStatement(sql);
+
+			
+			pst.setInt(1, escudo.getDefensa());
+			pst.setInt(2, escudo.getDurabilidad());
+			pst.setString(3, escudo.getMaterial());
+			
+
+			pst.execute();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+
+	public Escudo getEscudoId(int idEscudo) {
+		
+		Escudo escudo = new Escudo();
+		String sql = "SELECT * FROM escudo Where idEscudo = ?";
+
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idEscudo);
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			rellenarEscudo(rs, escudo);
+
+		} catch (SQLException e) {
+			System.out.println("te reventó ver escudos maquina");
+			e.printStackTrace();
+		}
+
+		return escudo;
+		
+	}
+	
+	private static void rellenarEscudo(ResultSet rs, Escudo escudo) throws SQLException {
+		
+		escudo.setIdEscudo(rs.getInt("idEscudo"));
+		escudo.setDefensa(rs.getInt("defensa"));
+		escudo.setDurabilidad(rs.getInt("durabilidad"));
+		escudo.setMaterial(rs.getString("material"));
+	
+	}
+	
+
+	public static ArrayList<Escudo> getEscudos() {
+		
+		ArrayList<Escudo> escudos = new ArrayList<Escudo>();
+		String sql = "SELECT * FROM escudo";
+
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while (rs.next()) {
+				Escudo escudo = new Escudo();
+
+				rellenarEscudo(rs, escudo);
+
+				escudos.add(escudo);
+			}
+		} catch (SQLException e) {
+			System.out.println("te revento ver escudos maquina");
+			e.printStackTrace();
+		}
+
+		return escudos;
+		
+	}
+
+	public static Escudo modificarEscudo(Escudo escudo, int idEscudo) throws SQLException {
+		
+		String sql = "UPDATE escudo SET Defensa=?,Durabilidad=?,Material=? WHERE idEscudo=?";
+		PreparedStatement pst = con.prepareStatement(sql);
+
+		try {
+			pst.setInt(1, escudo.getDefensa());
+			pst.setInt(2, escudo.getDurabilidad());
+			pst.setString(3, escudo.getMaterial());
+			pst.setInt(4, idEscudo);
+
+			pst.execute();
+
+		} catch (SQLException e) {
+			System.out.println("Peto en modificarEscudo");
+			e.printStackTrace();
+		}
+
+		return escudo;
+		
+	}
+
+	public void eliminarEscudo(int idEscudo) {
+		
+		String sentenciaSql = "DELETE FROM `escudo` WHERE idEscudo = ?";
+
+		PreparedStatement pst;
+
+		try {
+
+			pst = con.prepareStatement(sentenciaSql);
+			
+			pst.setInt(1, idEscudo);
+
+			pst.execute();
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} 
+	
+	public void insertarEscudero (Escudero escudero) {
+		
+		String sql = "INSERT INTO `escudero`(`nombre`, `idCaballero`, `exp`) VALUES (?,?,?)";
+
+		PreparedStatement pst;
+
+		try {
+
+			pst = con.prepareStatement(sql);
+
+			pst.setString(1, escudero.getNombre());
+			pst.setInt(2, escudero.getIdCaballero());
+			pst.setInt(3, escudero.getExp());
+			
+			
+
+			pst.execute();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+
+	public Escudero getEscuderoId(int idEscudero) {
+		
+		Escudero escudero = new Escudero();
+		String sql = "SELECT * FROM escudero Where idEscudero = ?";
+
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idEscudero);
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			rellenarEscudero(rs, escudero);
+
+		} catch (SQLException e) {
+			System.out.println("te reventó ver escuderos maquina");
+			e.printStackTrace();
+		}
+
+		return escudero;
+		
+	}
+	
+	private static void rellenarEscudero(ResultSet rs, Escudero escudero) throws SQLException {
+		
+		escudero.setIdEscudero(rs.getInt("idEscudero"));
+		escudero.setNombre(rs.getString("nombre"));
+		escudero.setIdCaballero(rs.getInt("idCaballero"));
+		escudero.setExp(rs.getInt("exp"));
+	
+	}
+	
+
+	public static ArrayList<Escudero> getEscuderos() {
+		
+		ArrayList<Escudero> escuderos = new ArrayList<Escudero>();
+		String sql = "SELECT * FROM escudero";
+
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while (rs.next()) {
+				Escudero escudero = new Escudero();
+
+				rellenarEscudero(rs, escudero);
+
+				escuderos.add(escudero);
+			}
+		} catch (SQLException e) {
+			System.out.println("te revento ver escuderos maquina");
+			e.printStackTrace();
+		}
+
+		return escuderos;
+		
+	}
+
+	public static Escudero modificarEscudero(Escudero escudero, int idEscudero) throws SQLException {
+		
+		String sql = "UPDATE escudero SET nombre=?,idCaballero=?,exp=? WHERE idEscudero=?";
+		PreparedStatement pst = con.prepareStatement(sql);
+
+		try {
+			pst.setString(1, escudero.getNombre());
+			pst.setInt(2, escudero.getIdCaballero());
+			pst.setInt(3, escudero.getExp());
+			pst.setInt(4, idEscudero);
+
+			pst.execute();
+
+		} catch (SQLException e) {
+			System.out.println("Peto en modificarEscudo");
+			e.printStackTrace();
+		}
+
+		return escudero;
+		
+	}
+
+	public void eliminarEscudero(int idEscudero) {
+		
+		String sentenciaSql = "DELETE FROM `escudero` WHERE idEscudero = ?";
+
+		PreparedStatement pst;
+
+		try {
+
+			pst = con.prepareStatement(sentenciaSql);
+			
+			pst.setInt(1, idEscudero);
+
+			pst.execute();
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} 
 
 
 

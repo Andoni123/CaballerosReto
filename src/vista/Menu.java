@@ -57,12 +57,34 @@ public class Menu {
 	
 	public static void mostrarMenuArmas() {
 
-		System.out.println("--Menu Caballeros");
+		System.out.println("--Menu Armas");
 		System.out.println(INSERTAR + "-Insertar un arma");
 		System.out.println(MOSTRAR_UNO + "-Mostrar un arma");
 		System.out.println(MOSTRAR_VARIOS + "-Mostrar todas las armas");
 		System.out.println(MODIFICAR + "-Modificar arma");
 		System.out.println(ELIMINAR + "-Eliminar arma");
+		System.out.println(SALIR_MENU + "-Salir");
+	}
+
+	public static void mostrarMenuEscudos() {
+		
+		System.out.println("--Menu Escudos");
+		System.out.println(INSERTAR + "-Insertar un escudo");
+		System.out.println(MOSTRAR_UNO + "-Mostrar un escudo");
+		System.out.println(MOSTRAR_VARIOS + "-Mostrar todas los escudos");
+		System.out.println(MODIFICAR + "-Modificar escudo");
+		System.out.println(ELIMINAR + "-Eliminar escudo");
+		System.out.println(SALIR_MENU + "-Salir");
+	}
+
+	public static void mostrarMenuEscuderos() {
+		
+		System.out.println("--Menu Escuderos");
+		System.out.println(INSERTAR + "-Insertar un escudero");
+		System.out.println(MOSTRAR_UNO + "-Mostrar un escudero");
+		System.out.println(MOSTRAR_VARIOS + "-Mostrar todas los escuderos");
+		System.out.println(MODIFICAR + "-Modificar escudero");
+		System.out.println(ELIMINAR + "-Eliminar escudero");
 		System.out.println(SALIR_MENU + "-Salir");
 	}
 }

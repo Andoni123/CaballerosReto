@@ -28,9 +28,11 @@ public class GestorCrud {
 				break;
 
 			case Menu.GESTIONAR_ESCUDOS:
+				GestorEscudos.run(scan);
 				break;
 
 			case Menu.GESTIONAR_ESCUDEROS:
+				GestorEscudero.run(scan);
 				break;
 
 			case Menu.GESTIONAR_CABALLOS:
