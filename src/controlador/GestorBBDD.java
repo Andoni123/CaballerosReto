@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Modelo.Caballero;
+import Modelo.*;
 
 public class GestorBBDD extends Conector {
 
@@ -40,10 +40,10 @@ public class GestorBBDD extends Conector {
 		return caballeros;
 	}
 
-	public Caballero getCapalleroId(int idCaballero) {
+	public Caballero getCaballeroId(int idCaballero) {
 
 		Caballero caballero=new Caballero();
-		String sql = "SELECT * FROM caballeros Where idCaballero = ?";
+		String sql = "SELECT * FROM caballeros Where idCaballero = '?'";
 
 		try {
 
@@ -98,4 +98,138 @@ public class GestorBBDD extends Conector {
 				return caballero;
 	}
 
-}
+
+
+
+
+	public int getDañoArma1(int idCaballero1) {
+		String sql = "SELECT Daño FROM arma WHERE idArma =(SELECT  idArma FROM  caballeros WHERE idCaballero = '?') ";
+		
+		Arma arma = new Arma();
+		int daño;
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idCaballero1);
+
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			daño=arma.setDaño(rs.getInt("Daño"));
+			
+		} catch (SQLException e) {
+			System.out.println("te reventó get defensa maquina");
+			e.printStackTrace();
+		}
+
+		return daño;
+	}
+	public int getDañoArma2(int idCaballero2) {
+		String sql = "SELECT Daño FROM arma WHERE idArma =(SELECT  idArma FROM  caballeros WHERE idCaballero = '?') ";
+		
+		Arma arma = new Arma();
+		int daño;
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idCaballero2);
+
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			daño=arma.setDaño(rs.getInt("Daño"));
+			
+		} catch (SQLException e) {
+			System.out.println("te reventó get defensa maquina");
+			e.printStackTrace();
+		}
+
+		return daño;
+	}
+
+	public int getDañoEscudo1(int idCaballero1) {
+		String sql = "SELECT Defensa FROM escudo WHERE idEscudo =(SELECT  idEscudo FROM  caballeros WHERE idCaballero = '?') ";
+		
+		Escudo escudo = new Escudo();
+		int defensa;
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idCaballero1);
+
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			defensa=Escudo.setDefensa(rs.getInt("Defensa"));
+			
+		} catch (SQLException e) {
+			System.out.println("te reventó get defensa maquina");
+			e.printStackTrace();
+		}
+
+		return defensa;
+	}
+	public int getDañoEscudo2(int idCaballero2) {
+		String sql = "SELECT Defensa FROM escudo WHERE idEscudo =(SELECT  idEscudo FROM  caballeros WHERE idCaballero = '?') ";
+		
+		Escudo escudo = new Escudo();
+		int defensa;
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idCaballero2);
+
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			defensa=Escudo.setDefensa(rs.getInt("Defensa"));
+			
+		} catch (SQLException e) {
+			System.out.println("te reventó get defensa maquina");
+			e.printStackTrace();
+		}
+
+		return defensa;
+	}
+
+	public int getHabilidadCaballero1(int idCaballero1) {
+		String sql = "SELECT Habilidad FROM caballeros WHERE  idCaballero = '?') ";
+		
+		Caballero caballero = new Caballero();
+		int habilidad;
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idCaballero1);
+
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			habilidad=caballero.setHabilidad(rs.getInt("Habilidad"));
+			
+		} catch (SQLException e) {
+			System.out.println("te reventó get Habilidad maquina");
+			e.printStackTrace();
+		}
+
+		return habilidad;
+		}
+	public int getHabilidadCaballero2(int idCaballero2) {
+		String sql = "SELECT Habilidad FROM caballeros WHERE  idCaballero = '?') ";
+		
+		Caballero caballero = new Caballero();
+		int habilidad;
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idCaballero2);
+
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			habilidad=caballero.setHabilidad(rs.getInt("Habilidad"));
+			
+		} catch (SQLException e) {
+			System.out.println("te reventó get Habilidad maquina");
+			e.printStackTrace();
+		}
+
+		return habilidad;
+		}
+	}
+
+

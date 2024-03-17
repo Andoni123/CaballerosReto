@@ -28,6 +28,7 @@ public class GestorPrincipal {
 				
 			
 			case Menu.BATALLA:
+				
 				break;
 			
 			case Menu.MAS_INFORMACION:

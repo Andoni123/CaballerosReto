@@ -52,5 +52,7 @@ public class Formulario {
 		return idCaballero;
 	}
 
+
+
 	
 }
