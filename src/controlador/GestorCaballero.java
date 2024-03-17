@@ -34,7 +34,8 @@ public class GestorCaballero {
 			case Menu.MOSTRAR_UNO:
 				gestorBBDD.conectar();
 				int idCaballero = Formulario.pedirIdCaballero(scan);
-				 caballero=gestorBBDD.getCapalleroId(idCaballero);
+				Caballero caballero=gestorBBDD.getCaballeroId(idCaballero);
+
 				Visor.mostrarCaballero(caballero);
 				gestorBBDD.cerrar();
 				break;
