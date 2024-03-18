@@ -4,20 +4,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Modelo.Arma;
 import Modelo.Caballero;
+import Modelo.Caballo;
 import vista.Formulario;
 import vista.Menu;
 import vista.Visor;
 
-public class GestorArmas {
+public class GestorCaballos {
 
 	public static void run(Scanner scan) throws SQLException {
-		
+
 		int option;
 
 		do {
-			Menu.mostrarMenuArmas();
+			Menu.mostrarMenuCaballos();
 			System.out.println("Introduzca la opcion");
 			option = Integer.parseInt(scan.nextLine());
 			GestorBBDD gestorBBDD = new GestorBBDD();
@@ -26,43 +26,44 @@ public class GestorArmas {
 			switch (option) {
 			case Menu.INSERTAR:
 				gestorBBDD.conectar();
-				Arma arma = Formulario.pedirDatosArma(scan);
-				gestorBBDD.insertarArma(arma);
-				Visor.armaInsertada();
+				Caballo caballo = Formulario.pedirDatosCaballo(scan);
+				gestorBBDD.insertarCaballo(caballo);
+				Visor.caballoInsertado();
 				gestorBBDD.cerrar();
 				break;
 
 			case Menu.MOSTRAR_UNO:
 				gestorBBDD.conectar();
-				int idArma = Formulario.pedirIdArma(scan);
-				 arma=gestorBBDD.getArmaId(idArma);
-				Visor.mostrarArma(arma);
+				int idCaballo = Formulario.pedirIdCaballo(scan);
+				caballo = gestorBBDD.getCaballoId(idCaballo);
+
+				Visor.mostrarCaballo(caballo);
 				gestorBBDD.cerrar();
 				break;
 
 			case Menu.MOSTRAR_VARIOS:
 				gestorBBDD.conectar();
-				ArrayList <Arma>armas=gestorBBDD.getArmas();
-				Visor.mostrarArmas(armas);
+				ArrayList <Caballo>caballos=gestorBBDD.getCaballos();
+				Visor.mostrarCaballos(caballos);
 				gestorBBDD.cerrar();
 				break;
 
-				case Menu.MODIFICAR:
+			case Menu.MODIFICAR:
 				gestorBBDD.conectar();
-				armas = GestorBBDD.getArmas();
-				Visor.mostrarArmas(armas);
-				idArma = Formulario.pedirIdArma(scan);
-				arma = Formulario.pedirDatosArma(scan);
-				gestorBBDD.modificarArma(arma, idArma);
-				Visor.armaModificada();
+				caballos = GestorBBDD.getCaballos();
+				Visor.mostrarCaballos(caballos);
+				idCaballo = Formulario.pedirIdCaballo(scan);
+				caballo = Formulario.pedirDatosCaballo(scan);
+				gestorBBDD.modificarCaballo(caballo, idCaballo);
+				Visor.caballoModificado();
 				gestorBBDD.cerrar();
 				break;
 
 			case Menu.ELIMINAR:
 				gestorBBDD.conectar();
-				idArma = Formulario.pedirIdArma(scan);
-				gestorBBDD.eliminarArma(idArma);
-				Visor.armaEliminada();
+				idCaballo = Formulario.pedirIdCaballo(scan);
+				gestorBBDD.eliminarCaballo(idCaballo);
+				Visor.caballoEliminado();
 				gestorBBDD.cerrar();
 				break;
 
@@ -73,5 +74,4 @@ public class GestorArmas {
 		} while (option != 0);
 
 	}
-	
 }
