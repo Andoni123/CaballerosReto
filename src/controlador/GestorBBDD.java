@@ -401,6 +401,79 @@ public class GestorBBDD extends Conector {
 
 		return habilidad;
 		}
+
+	public static void subirExperienciaEscudero2(int idCaballero2) {
+
+		String sql = "SELECT exp FROM escudero WHERE  idCaballero = '?') ";
+		Escudero escudero= new Escudero();
+		int exp;
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idCaballero2);
+
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			exp=Escudero.setExp(rs.getInt("exp"));
+			
+		} catch (SQLException e) {
+			System.out.println("te reventó get Habilidad maquina");
+			e.printStackTrace();
+		}
+
+		return exp;
+		}
+	
+
+	public static void subirExperienciaEscudero1(int idCaballero1) {
+
+		
+	}
+
+	public static void escuderoSube(int idEscudero2) {
+
+		String sql="INSERT INTO  caballeros (Nombre)SELECT nombre FROM escudero WHERE idEscudero= '?' ";
+		Escudero escudero= new Escudero();
+		int idEscudero;
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idEscudero);
+
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			idEscudero=caballero.setIdEscudero(rs.getInt("idEscudero"));
+			
+		} catch (SQLException e) {
+			System.out.println("te reventó get idEscudero maquina");
+			e.printStackTrace();
+		}
+
+		return idEscudero;
+	}
+
+	public static void getIdEscudero(int idCaballero2) {
+		String sql = "SELECT idEscudero FROM caballeros WHERE  idCaballero = '?') ";
+		
+		Caballero caballero = new Caballero();
+		int idEscudero;
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idCaballero2);
+
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			idEscudero=caballero.setIdEscudero(rs.getInt("idEscudero"));
+			
+		} catch (SQLException e) {
+			System.out.println("te reventó get idEscudero maquina");
+			e.printStackTrace();
+		}
+
+		return idEscudero;
+		
+	}
 	}
 
 
