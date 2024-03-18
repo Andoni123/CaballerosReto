@@ -28,7 +28,7 @@ public class GestorPrincipal {
 				
 			
 			case Menu.BATALLA:
-				
+				Batalla.run(scan);
 				break;
 			
 			case Menu.MAS_INFORMACION:

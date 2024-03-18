@@ -5,64 +5,63 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Modelo.Arma;
-import Modelo.Caballero;
+import Modelo.Escudo;
 import vista.Formulario;
 import vista.Menu;
 import vista.Visor;
 
-public class GestorArmas {
+public class GestorEscudos {
 
 	public static void run(Scanner scan) throws SQLException {
-		
+
 		int option;
 
 		do {
-			Menu.mostrarMenuArmas();
+			Menu.mostrarMenuEscudos();
 			System.out.println("Introduzca la opcion");
 			option = Integer.parseInt(scan.nextLine());
 			GestorBBDD gestorBBDD = new GestorBBDD();
-			
 
 			switch (option) {
 			case Menu.INSERTAR:
 				gestorBBDD.conectar();
-				Arma arma = Formulario.pedirDatosArma(scan);
-				gestorBBDD.insertarArma(arma);
-				Visor.armaInsertada();
+				Escudo escudo = Formulario.pedirDatosEscudo(scan);
+				gestorBBDD.insertarEscudo(escudo);
+				Visor.escudoInsertado();
 				gestorBBDD.cerrar();
 				break;
 
 			case Menu.MOSTRAR_UNO:
 				gestorBBDD.conectar();
-				int idArma = Formulario.pedirIdArma(scan);
-				 arma=gestorBBDD.getArmaId(idArma);
-				Visor.mostrarArma(arma);
+				int idEscudo = Formulario.pedirIdEscudo(scan);
+				escudo = gestorBBDD.getEscudoId(idEscudo);
+				Visor.mostrarEscudo(escudo);
 				gestorBBDD.cerrar();
 				break;
 
 			case Menu.MOSTRAR_VARIOS:
 				gestorBBDD.conectar();
-				ArrayList <Arma>armas=gestorBBDD.getArmas();
-				Visor.mostrarArmas(armas);
+				ArrayList<Escudo> escudos = gestorBBDD.getEscudos();
+				Visor.mostrarEscudos(escudos);
 				gestorBBDD.cerrar();
 				break;
 
-				case Menu.MODIFICAR:
+			case Menu.MODIFICAR:
 				gestorBBDD.conectar();
-				armas = GestorBBDD.getArmas();
-				Visor.mostrarArmas(armas);
-				idArma = Formulario.pedirIdArma(scan);
-				arma = Formulario.pedirDatosArma(scan);
-				gestorBBDD.modificarArma(arma, idArma);
-				Visor.armaModificada();
+				escudos = GestorBBDD.getEscudos();
+				Visor.mostrarEscudos(escudos);
+				idEscudo = Formulario.pedirIdEscudo(scan);
+				escudo = Formulario.pedirDatosEscudo(scan);
+				gestorBBDD.modificarEscudo(escudo, idEscudo);
+				Visor.escudoModificado();
 				gestorBBDD.cerrar();
 				break;
 
 			case Menu.ELIMINAR:
 				gestorBBDD.conectar();
-				idArma = Formulario.pedirIdArma(scan);
-				gestorBBDD.eliminarArma(idArma);
-				Visor.armaEliminada();
+				idEscudo = Formulario.pedirIdEscudo(scan);
+				gestorBBDD.eliminarEscudo(idEscudo);
+				Visor.escudoEliminado();
 				gestorBBDD.cerrar();
 				break;
 
@@ -73,5 +72,5 @@ public class GestorArmas {
 		} while (option != 0);
 
 	}
-	
+
 }
