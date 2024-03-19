@@ -63,7 +63,7 @@ public class GestorBBDD extends Conector {
 	public Caballero getCaballeroId(int idCaballero) {
 
 		Caballero caballero = new Caballero();
-		String sql = "SELECT * FROM caballeros Where idCaballero = '?'";
+		String sql = "SELECT * FROM caballeros Where idCaballero = ?";
 
 		try {
 
@@ -772,7 +772,7 @@ public class GestorBBDD extends Conector {
 			exp = (rs.getInt("exp"));
 
 		} catch (SQLException e) {
-			System.out.println("te reventó get Habilidad maquina");
+			System.out.println("te subirExperienciaEscudero maquina");
 			e.printStackTrace();
 		}
 
@@ -783,20 +783,20 @@ public class GestorBBDD extends Conector {
 		
 	
 	
-	public static Escudero subirExperiencia(int idEscudero2) throws SQLException {
+	public static Escudero subirExperiencia(int idEscudero, int exp) throws SQLException {
 		
 		String sql = "UPDATE escudero SET exp=? WHERE idEscudero=?";
 		PreparedStatement pst = con.prepareStatement(sql);
 		Escudero escudero= new Escudero();
 		try {
 			
-			pst.setInt(1, escudero.getExp());
-			pst.setInt(2, idEscudero2);
+			pst.setInt(1, exp);
+			pst.setInt(2, idEscudero);
 
 			pst.execute();
 
 		} catch (SQLException e) {
-			System.out.println("Peto en modificarEscudo");
+			System.out.println("Peto en subir experiencia");
 			e.printStackTrace();
 		}
 
