@@ -1,5 +1,6 @@
 package modelo;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -733,6 +734,7 @@ public class GestorBBDD extends Conector {
 
 		return habilidad;
 	}
+
 	public int getHabilidadCaballero2(int idCaballero2) {
 		String sql = "SELECT Habilidad FROM caballeros WHERE  idCaballero = ? ";
 
@@ -754,8 +756,6 @@ public class GestorBBDD extends Conector {
 
 		return habilidad;
 	}
-
-	
 
 	public static int subirExperienciaEscudero(int idCaballero) {
 
@@ -779,17 +779,13 @@ public class GestorBBDD extends Conector {
 		return exp;
 	}
 
-	
-		
-	
-	
 	public static Escudero subirExperiencia(int idEscudero2) throws SQLException {
-		
+
 		String sql = "UPDATE escudero SET exp=? WHERE idEscudero=?";
 		PreparedStatement pst = con.prepareStatement(sql);
-		Escudero escudero= new Escudero();
+		Escudero escudero = new Escudero();
 		try {
-			
+
 			pst.setInt(1, escudero.getExp());
 			pst.setInt(2, idEscudero2);
 
@@ -801,7 +797,7 @@ public class GestorBBDD extends Conector {
 		}
 
 		return escudero;
-		
+
 	}
 
 	public static int escuderoSube(int idEscudero) {
@@ -825,7 +821,6 @@ public class GestorBBDD extends Conector {
 		return idEscudero;
 	}
 
-
 	public static int getIdEscudero(int idCaballero) {
 		String sql = "SELECT idEscudero FROM caballeros WHERE  idCaballero = ? ";
 
@@ -848,8 +843,29 @@ public class GestorBBDD extends Conector {
 		return idEscudero;
 
 	}
-	
 
-	
+	public static void guardarResultado( int idCaballeroGanador, int idCaballeroPerdedor) {
+
+		String sql = "INSERT INTO `combate`(`fecha`, `idCaballeroGanador`, `idCaballeroPerdedor`) VALUES (?,?,?)";
+		Combate combate = new Combate();
+		PreparedStatement pst;
+
+		try {
+
+			pst = con.prepareStatement(sql);
+
+			
+			
+			pst.setDate(1, new java.sql.Date(new java.util.Date().getTime()));
+			pst.setInt(2, idCaballeroGanador);
+			pst.setInt(3, idCaballeroPerdedor);
+
+			pst.execute();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
