@@ -2,7 +2,7 @@ package controlador;
 
 import java.sql.SQLException;
 
-import modelo.GestorBBDD;
+import modelo.*;
 
 public class CambioExperiencia {
 
@@ -18,7 +18,7 @@ public class CambioExperiencia {
 
 		} else {
 
-			GestorBBDD.subirExperiencia(idEscudero);
+			GestorBBDD.subirExperiencia(idEscudero, exp);
 		}
 	}
 
@@ -33,7 +33,7 @@ public class CambioExperiencia {
 			GestorBBDD.escuderoSube(idEscudero);
 		} else {
 
-			GestorBBDD.subirExperiencia(idEscudero);
+			GestorBBDD.subirExperiencia(idEscudero, exp);
 		}
 	}
 }
