@@ -49,7 +49,7 @@ public class Menu {
 
 	public static void mostrarMenuCaballeros() {
 
-		System.out.println("--Menu Caballeros");
+		System.out.println("--Menu Caballeros--");
 		System.out.println(SALIR_MENU + "-Salir");
 		System.out.println(INSERTAR + "-Insertar un caballero");
 		System.out.println(MOSTRAR_UNO + "-Mostrar un caballero");
@@ -61,7 +61,7 @@ public class Menu {
 	
 	public static void mostrarMenuArmas() {
 
-		System.out.println("--Menu Armas");
+		System.out.println("--Menu Armas--");
 		System.out.println(SALIR_MENU + "-Salir");
 		System.out.println(INSERTAR + "-Insertar un arma");
 		System.out.println(MOSTRAR_UNO + "-Mostrar un arma");
@@ -73,7 +73,7 @@ public class Menu {
 
 	public static void mostrarMenuEscudos() {
 		
-		System.out.println("--Menu Escudos");
+		System.out.println("--Menu Escudos--");
 		System.out.println(SALIR_MENU + "-Salir");
 		System.out.println(INSERTAR + "-Insertar un escudo");
 		System.out.println(MOSTRAR_UNO + "-Mostrar un escudo");
@@ -85,7 +85,7 @@ public class Menu {
 
 	public static void mostrarMenuEscuderos() {
 		
-		System.out.println("--Menu Escuderos");
+		System.out.println("--Menu Escuderos--");
 		System.out.println(SALIR_MENU + "-Salir");
 		System.out.println(INSERTAR + "-Insertar un escudero");
 		System.out.println(MOSTRAR_UNO + "-Mostrar un escudero");
@@ -97,7 +97,7 @@ public class Menu {
 
 	public static void mostrarMenuCaballos() {
 		
-		System.out.println("--Menu Caballos");
+		System.out.println("--Menu Caballos--");
 		System.out.println(SALIR_MENU + "-Salir");
 		System.out.println(INSERTAR + "-Insertar un caballo");
 		System.out.println(MOSTRAR_UNO + "-Mostrar un caballo");
