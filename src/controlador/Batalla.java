@@ -8,7 +8,7 @@ import vista.*;
 
 public class Batalla {
 	public static void run(Scanner scan) throws SQLException {
-		GestorBBDDcontrolador gestorBBDD = new GestorBBDDcontrolador();
+		GestorBBDD gestorBBDD = new GestorBBDD();
 
 		gestorBBDD.conectar();
 
