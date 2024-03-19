@@ -4,9 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Modelo.*;
 import controlador.*;
-
+import modelo.*;
 import vista.*;
 
 public class GestorCaballero {

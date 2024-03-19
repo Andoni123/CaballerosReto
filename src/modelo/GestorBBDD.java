@@ -1,4 +1,4 @@
-package controlador;
+package modelo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import modelo.*;
+import controlador.Conector;
 
 public class GestorBBDD extends Conector {
 
@@ -63,7 +63,7 @@ public class GestorBBDD extends Conector {
 	public Caballero getCaballeroId(int idCaballero) {
 
 		Caballero caballero = new Caballero();
-		String sql = "SELECT * FROM caballeros Where idCaballero = ?";
+		String sql = "SELECT * FROM caballeros Where idCaballero = '?'";
 
 		try {
 
@@ -713,7 +713,7 @@ public class GestorBBDD extends Conector {
 	}
 
 	public int getHabilidadCaballero1(int idCaballero1) {
-		String sql = "SELECT Habilidad FROM caballeros WHERE  idCaballero = ?1 ";
+		String sql = "SELECT Habilidad FROM caballeros WHERE  idCaballero = ? ";
 
 		Caballero caballero = new Caballero();
 		int habilidad = 0;
@@ -733,12 +733,11 @@ public class GestorBBDD extends Conector {
 
 		return habilidad;
 	}
-
 	public int getHabilidadCaballero2(int idCaballero2) {
 		String sql = "SELECT Habilidad FROM caballeros WHERE  idCaballero = ? ";
 
 		Caballero caballero = new Caballero();
-		int habilidad;
+		int habilidad = 0;
 		try {
 
 			PreparedStatement pst = con.prepareStatement(sql);
@@ -753,6 +752,104 @@ public class GestorBBDD extends Conector {
 			e.printStackTrace();
 		}
 
-		return habilidad = 0;
+		return habilidad;
 	}
+
+	
+
+	public static int subirExperienciaEscudero(int idCaballero) {
+
+		String sql = "SELECT exp FROM escudero WHERE  idCaballero = ? ";
+		Escudero escudero = new Escudero();
+		int exp = 0;
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idCaballero);
+
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			exp = (rs.getInt("exp"));
+
+		} catch (SQLException e) {
+			System.out.println("te reventó get Habilidad maquina");
+			e.printStackTrace();
+		}
+
+		return exp;
+	}
+
+	
+		
+	
+	
+	public static Escudero subirExperiencia(int idEscudero2) throws SQLException {
+		
+		String sql = "UPDATE escudero SET exp=? WHERE idEscudero=?";
+		PreparedStatement pst = con.prepareStatement(sql);
+		Escudero escudero= new Escudero();
+		try {
+			
+			pst.setInt(1, escudero.getExp());
+			pst.setInt(2, idEscudero2);
+
+			pst.execute();
+
+		} catch (SQLException e) {
+			System.out.println("Peto en modificarEscudo");
+			e.printStackTrace();
+		}
+
+		return escudero;
+		
+	}
+
+	public static int escuderoSube(int idEscudero) {
+
+		String sql = "INSERT INTO  caballeros (Nombre)SELECT nombre FROM escudero WHERE idEscudero= ? ";
+		Escudero escudero = new Escudero();
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idEscudero);
+
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			idEscudero = (rs.getInt("idEscudero"));
+
+		} catch (SQLException e) {
+			System.out.println("te reventó get idEscudero maquina");
+			e.printStackTrace();
+		}
+
+		return idEscudero;
+	}
+
+
+	public static int getIdEscudero(int idCaballero) {
+		String sql = "SELECT idEscudero FROM caballeros WHERE  idCaballero = ? ";
+
+		Caballero caballero = new Caballero();
+		int idEscudero = 0;
+		try {
+
+			PreparedStatement pst = con.prepareStatement(sql);
+			pst.setInt(1, idCaballero);
+
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			idEscudero = (rs.getInt("idEscudero"));
+
+		} catch (SQLException e) {
+			System.out.println("te reventó get idEscudero maquina");
+			e.printStackTrace();
+		}
+
+		return idEscudero;
+
+	}
+	
+
+	
+
 }

@@ -4,8 +4,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Modelo.Escudero;
-import Modelo.Escudo;
+import modelo.Escudero;
+import modelo.Escudo;
+import modelo.GestorBBDD;
 import vista.Formulario;
 import vista.Menu;
 import vista.Visor;
