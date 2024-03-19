@@ -2,7 +2,9 @@ package controlador;
 
 import java.sql.SQLException;
 
-import modelo.*;
+import modelo.GestorBBDD;
+
+
 
 public class CambioExperiencia {
 
