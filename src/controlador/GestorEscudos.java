@@ -70,7 +70,7 @@ public class GestorEscudos {
 				break;
 			}
 
-		} while (option != 6);
+		} while (option != 0);
 
 	}
 
