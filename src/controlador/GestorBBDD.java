@@ -63,7 +63,7 @@ public class GestorBBDD extends Conector {
 	public Caballero getCaballeroId(int idCaballero) {
 
 		Caballero caballero = new Caballero();
-		String sql = "SELECT * FROM caballeros Where idCaballero = '?'";
+		String sql = "SELECT * FROM caballeros Where idCaballero = ?";
 
 		try {
 
@@ -713,7 +713,7 @@ public class GestorBBDD extends Conector {
 	}
 
 	public int getHabilidadCaballero1(int idCaballero1) {
-		String sql = "SELECT Habilidad FROM caballeros WHERE  idCaballero = ? ";
+		String sql = "SELECT Habilidad FROM caballeros WHERE  idCaballero = ?1 ";
 
 		Caballero caballero = new Caballero();
 		int habilidad = 0;
