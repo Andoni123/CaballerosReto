@@ -1,7 +1,7 @@
 package controlador;
 import java.sql.SQLException;
 
-import Modelo.Caballero;
+import modelo.Caballero;
 
 public class Main {
 

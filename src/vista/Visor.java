@@ -2,11 +2,11 @@ package vista;
 
 import java.util.ArrayList;
 
-import Modelo.Arma;
-import Modelo.Caballero;
-import Modelo.Caballo;
-import Modelo.Escudero;
-import Modelo.Escudo;
+import modelo.Arma;
+import modelo.Caballero;
+import modelo.Caballo;
+import modelo.Escudero;
+import modelo.Escudo;
 
 public class Visor {
 
@@ -44,7 +44,7 @@ public class Visor {
 
 	public static void mostrarArma(Arma arma) {
 
-		System.out.println(arma);
+		System.out.println(arma.toString());
 
 	}
 
@@ -75,7 +75,7 @@ public class Visor {
 
 	public static void mostrarEscudo(Escudo escudo) {
 
-		System.out.println(escudo);
+		System.out.println(escudo.toString());
 
 	}
 
@@ -106,7 +106,7 @@ public class Visor {
 
 	public static void mostrarEscudero(Escudero escudero) {
 
-		System.out.println(escudero);
+		System.out.println(escudero.toString());
 
 	}
 
@@ -135,7 +135,7 @@ public class Visor {
 
 	public static void mostrarCaballo(Caballo caballo) {
 
-		System.out.println(caballo);
+		System.out.println(caballo.toString());
 
 	}
 

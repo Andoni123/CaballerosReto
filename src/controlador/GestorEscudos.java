@@ -4,8 +4,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Modelo.Arma;
-import Modelo.Escudo;
+import modelo.Arma;
+import modelo.Escudo;
+import modelo.GestorBBDD;
 import vista.Formulario;
 import vista.Menu;
 import vista.Visor;
@@ -69,7 +70,7 @@ public class GestorEscudos {
 				break;
 			}
 
-		} while (option != 0);
+		} while (option != 6);
 
 	}
 

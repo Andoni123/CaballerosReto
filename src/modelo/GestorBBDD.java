@@ -1,4 +1,4 @@
-package controlador;
+package modelo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Modelo.*;
+import controlador.Conector;
 
 public class GestorBBDD extends Conector {
 
@@ -733,12 +733,11 @@ public class GestorBBDD extends Conector {
 
 		return habilidad;
 	}
-
 	public int getHabilidadCaballero2(int idCaballero2) {
 		String sql = "SELECT Habilidad FROM caballeros WHERE  idCaballero = ? ";
 
 		Caballero caballero = new Caballero();
-		int habilidad;
+		int habilidad = 0;
 		try {
 
 			PreparedStatement pst = con.prepareStatement(sql);
@@ -756,19 +755,21 @@ public class GestorBBDD extends Conector {
 		return habilidad;
 	}
 
-	public static void subirExperienciaEscudero2(int idCaballero2) {
+	
 
-		String sql = "SELECT exp FROM escudero WHERE  idCaballero = '?') ";
+	public static int subirExperienciaEscudero(int idCaballero) {
+
+		String sql = "SELECT exp FROM escudero WHERE  idCaballero = ? ";
 		Escudero escudero = new Escudero();
-		int exp;
+		int exp = 0;
 		try {
 
 			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setInt(1, idCaballero2);
+			pst.setInt(1, idCaballero);
 
 			ResultSet rs = pst.executeQuery();
 			rs.next();
-			exp = Escudero.setExp(rs.getInt("exp"));
+			exp = (rs.getInt("exp"));
 
 		} catch (SQLException e) {
 			System.out.println("te reventó get Habilidad maquina");
@@ -778,15 +779,35 @@ public class GestorBBDD extends Conector {
 		return exp;
 	}
 
-	public static void subirExperienciaEscudero1(int idCaballero1) {
+	
+		
+	
+	
+	public static Escudero subirExperiencia(int idEscudero2) throws SQLException {
+		
+		String sql = "UPDATE escudero SET exp=? WHERE idEscudero=?";
+		PreparedStatement pst = con.prepareStatement(sql);
+		Escudero escudero= new Escudero();
+		try {
+			
+			pst.setInt(1, escudero.getExp());
+			pst.setInt(2, idEscudero2);
 
+			pst.execute();
+
+		} catch (SQLException e) {
+			System.out.println("Peto en modificarEscudo");
+			e.printStackTrace();
+		}
+
+		return escudero;
+		
 	}
 
-	public static void escuderoSube(int idEscudero2) {
+	public static int escuderoSube(int idEscudero) {
 
-		String sql = "INSERT INTO  caballeros (Nombre)SELECT nombre FROM escudero WHERE idEscudero= '?' ";
+		String sql = "INSERT INTO  caballeros (Nombre)SELECT nombre FROM escudero WHERE idEscudero= ? ";
 		Escudero escudero = new Escudero();
-		int idEscudero;
 		try {
 
 			PreparedStatement pst = con.prepareStatement(sql);
@@ -794,7 +815,7 @@ public class GestorBBDD extends Conector {
 
 			ResultSet rs = pst.executeQuery();
 			rs.next();
-			idEscudero = caballero.setIdEscudero(rs.getInt("idEscudero"));
+			idEscudero = (rs.getInt("idEscudero"));
 
 		} catch (SQLException e) {
 			System.out.println("te reventó get idEscudero maquina");
@@ -804,15 +825,16 @@ public class GestorBBDD extends Conector {
 		return idEscudero;
 	}
 
-	public static int getIdEscudero(int idCaballero2) {
-		String sql = "SELECT idEscudero FROM caballeros WHERE  idCaballero = '?') ";
+
+	public static int getIdEscudero(int idCaballero) {
+		String sql = "SELECT idEscudero FROM caballeros WHERE  idCaballero = ? ";
 
 		Caballero caballero = new Caballero();
 		int idEscudero = 0;
 		try {
 
 			PreparedStatement pst = con.prepareStatement(sql);
-			pst.setInt(1, idCaballero2);
+			pst.setInt(1, idCaballero);
 
 			ResultSet rs = pst.executeQuery();
 			rs.next();
@@ -826,5 +848,8 @@ public class GestorBBDD extends Conector {
 		return idEscudero;
 
 	}
+	
+
+	
 
 }

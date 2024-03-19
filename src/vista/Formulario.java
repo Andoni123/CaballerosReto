@@ -2,11 +2,11 @@ package vista;
 
 import java.util.Scanner;
 
-import Modelo.Arma;
-import Modelo.Caballero;
-import Modelo.Caballo;
-import Modelo.Escudero;
-import Modelo.Escudo;
+import modelo.Arma;
+import modelo.Caballero;
+import modelo.Caballo;
+import modelo.Escudero;
+import modelo.Escudo;
 
 public class Formulario {
 
