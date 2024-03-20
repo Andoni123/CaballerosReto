@@ -772,22 +772,26 @@ public class GestorBBDD extends Conector {
 			exp = (rs.getInt("exp"));
 
 		} catch (SQLException e) {
-			System.out.println("te reventó get Habilidad maquina");
+
+			System.out.println("te  peto  subirExperienciaEscudero maquina");
+
 			e.printStackTrace();
 		}
 
 		return exp;
 	}
 
-	public static Escudero subirExperiencia(int idEscudero2 ,int exp) throws SQLException {
+	public static Escudero subirExperiencia(int idEscudero, int exp) throws SQLException {
+
 
 		String sql = "UPDATE escudero SET exp=? WHERE idEscudero=?";
 		PreparedStatement pst = con.prepareStatement(sql);
 		Escudero escudero = new Escudero();
 		try {
 
+
 			pst.setInt(1, exp);
-			pst.setInt(2, idEscudero2);
+			pst.setInt(2, idEscudero);
 
 			pst.execute();
 
@@ -800,10 +804,13 @@ public class GestorBBDD extends Conector {
 
 	}
 
-	public static int escuderoSube(int idEscudero, int exp) {
 
-		String sql = "INSERT INTO  caballeros (Nombre)SELECT nombre FROM escudero WHERE idEscudero= ? ";
+	public static Escudero escuderoSube(int idEscudero) {
+
+
+		String sql = "SELECT `idEscudero`, `nombre`, `idCaballero`, `exp` FROM `escudero` WHERE idEscudero= ? ";
 		Escudero escudero = new Escudero();
+		String nombre = "";
 		try {
 
 			PreparedStatement pst = con.prepareStatement(sql);
@@ -811,14 +818,14 @@ public class GestorBBDD extends Conector {
 
 			ResultSet rs = pst.executeQuery();
 			rs.next();
-			idEscudero = (rs.getInt("idEscudero"));
+			nombre = (rs.getString("nombre"));
 
 		} catch (SQLException e) {
 			System.out.println("te reventó get idEscudero maquina");
 			e.printStackTrace();
 		}
 
-		return idEscudero;
+		return escudero;
 	}
 
 	public static int getIdEscudero(int idCaballero) {
@@ -844,7 +851,7 @@ public class GestorBBDD extends Conector {
 
 	}
 
-	public static void guardarResultado( int idCaballeroGanador, int idCaballeroPerdedor) {
+	public static void guardarResultado(int idCaballeroGanador, int idCaballeroPerdedor) {
 
 		String sql = "INSERT INTO `combate`(`fecha`, `idCaballeroGanador`, `idCaballeroPerdedor`) VALUES (?,?,?)";
 		Combate combate = new Combate();
@@ -854,8 +861,6 @@ public class GestorBBDD extends Conector {
 
 			pst = con.prepareStatement(sql);
 
-			
-			
 			pst.setDate(1, new java.sql.Date(new java.util.Date().getTime()));
 			pst.setInt(2, idCaballeroGanador);
 			pst.setInt(3, idCaballeroPerdedor);
