@@ -16,7 +16,7 @@ public class CambioExperiencia {
 		int idEscudero = GestorBBDD.getIdEscudero(idCaballero);
 		if (exp >= 350) {
 
-			GestorBBDD.escuderoSube(idEscudero);
+			GestorBBDD.escuderoSube(idEscudero,exp);
 
 		} else {
 
@@ -32,7 +32,7 @@ public class CambioExperiencia {
 		int idEscudero = GestorBBDD.getIdEscudero(idCaballero);
 		if (exp >= 350) {
 
-			GestorBBDD.escuderoSube(idEscudero);
+			GestorBBDD.escuderoSube(idEscudero,exp);
 		} else {
 
 			GestorBBDD.subirExperiencia(idEscudero, exp);
