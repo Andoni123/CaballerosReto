@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import vista.Menu;
+import vista.Visor;
 
 public class GestorPrincipal {
 
@@ -32,6 +33,7 @@ public class GestorPrincipal {
 				break;
 			
 			case Menu.MAS_INFORMACION:
+				Visor.mostrarInformacion();
 				break;
 
 			default:

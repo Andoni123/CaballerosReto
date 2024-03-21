@@ -158,5 +158,19 @@ public class Visor {
 		System.out.println("Caballo eliminado");
 
 	}
+	
+	public static void mostrarInformacion() {
+		
+		System.out.println("\nInformación Educativa:");
+        System.out.println("---------------------------");
+        System.out.println("Los caballeros eran guerreros de élite en la sociedad feudal de la Edad Media, ");
+        System.out.println("comprometidos con el código de honor conocido como la Caballería. Este código ");
+        System.out.println("exigía lealtad, valentía, cortesía y protección de los débiles. Los caballeros ");
+        System.out.println("participaron en torneos, justas y batallas en nombre de su señor feudal.");
+        System.out.println("La Edad Media fue un período histórico que abarcó aproximadamente desde el siglo V ");
+        System.out.println("hasta el siglo XV en Europa. Se caracterizó por la fragmentación política, la ");
+        System.out.println("feudalización de la sociedad, el poder de la Iglesia Católica, las Cruzadas y el ");
+        System.out.println("desarrollo de la arquitectura gótica, entre otros aspectos.");
+	}
 
 }
