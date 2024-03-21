@@ -805,7 +805,7 @@ public class GestorBBDD extends Conector {
 	}
 
 
-	public static Escudero escuderoSube(int idEscudero) {
+	public static Escudero escuderoSube(int idEscudero, int exp) {
 
 
 		String sql = "SELECT `idEscudero`, `nombre`, `idCaballero`, `exp` FROM `escudero` WHERE idEscudero= ? ";

@@ -14,18 +14,16 @@ public class CalculadoraBatalla {
 		int resultadoBatalla = (int) ((daño1 + defensa1 + habilidad1) * (Math.random() + 1)
 				- (daño2 + defensa2 + habilidad2) * (Math.random() + 1));
 		
-		GestorBBDD gestorBBDD = new GestorBBDD();
-		
 		
 		if (resultadoBatalla < 0) {
 
 			CambioExperiencia.ModificarExperienciaEscudero2(idCaballero2);
-			gestorBBDD.guardarResultado(idCaballero2,idCaballero1);
+			GestorBBDD.guardarResultado(idCaballero2,idCaballero1);
 
 		} else if (resultadoBatalla > 0) {
 
 			CambioExperiencia.ModificarExperienciaEscudero1(idCaballero1);
-			gestorBBDD.guardarResultado(idCaballero1,idCaballero2);
+			GestorBBDD.guardarResultado(idCaballero1,idCaballero2);
 
 		} else {
 			System.out.println("Empate");

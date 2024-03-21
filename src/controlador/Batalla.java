@@ -20,22 +20,19 @@ public class Batalla {
 		int daño2 = gestorBBDD.getDañoArma2(idCaballero2);
 		int defensa1 = gestorBBDD.getDañoEscudo1(idCaballero1);
 		int defensa2 = gestorBBDD.getDañoEscudo2(idCaballero2);
-		
 
 		Caballero caballero1 = gestorBBDD.getCaballeroId(idCaballero1);
 		Visor.mostrarCaballero(caballero1);
-		
+
 		System.out.println("VS");
-		
+
 		Caballero caballero2 = gestorBBDD.getCaballeroId(idCaballero2);
 		Visor.mostrarCaballero(caballero2);
 
 		CalculadoraBatalla.calculo(daño1, daño2, defensa1, defensa2, habilidad1, habilidad2, idCaballero1,
 				idCaballero2);
 
-
 		
-
 		gestorBBDD.cerrar();
 	}
 
