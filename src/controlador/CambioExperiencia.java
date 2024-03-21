@@ -15,7 +15,7 @@ public class CambioExperiencia {
 		int idEscudero = caballero.getIdEscudero();
 
 		if (idEscudero == 0) {
-			System.out.println("la vida");
+			System.out.println("el caballero ganador no tine escudero, por lo tanto, no se subira la experiencia a nadie");
 		} else {
 			int exp = GestorBBDD.subirExperienciaEscudero(idCaballero);
 			exp = exp + 50;
@@ -49,7 +49,7 @@ public class CambioExperiencia {
 		int idEscudero = caballero.getIdEscudero();
 
 		if (idEscudero == 0) {
-			System.out.println("la vida");
+			System.out.println("el caballero ganador no tine escudero, por lo tanto, no se subira la experiencia a nadie");
 		} else {
 			int exp = GestorBBDD.subirExperienciaEscudero(idCaballero);
 			exp = exp + 50;

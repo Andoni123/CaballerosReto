@@ -769,7 +769,7 @@ public class GestorBBDD extends Conector {
 
 			ResultSet rs = pst.executeQuery();
 			rs.next();
-			exp = (rs.getInt("exp"));
+			exp = rs.getInt("exp");
 
 		} catch (SQLException e) {
 			System.out.println("te  peto  subirExperienciaEscudero maquina");
