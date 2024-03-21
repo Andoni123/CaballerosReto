@@ -18,7 +18,7 @@ public class GestorCaballero {
 			Menu.mostrarMenuCaballeros();
 			System.out.println("Introduzca la opcion");
 			option = Integer.parseInt(scan.nextLine());
-			GestorBBDDcontrolador gestorBBDD = new GestorBBDDcontrolador();
+			GestorBBDD gestorBBDD = new GestorBBDD();
 			
 
 			switch (option) {
@@ -48,7 +48,7 @@ public class GestorCaballero {
 
 			case Menu.MODIFICAR:
 				gestorBBDD.conectar();
-				caballeros = GestorBBDDcontrolador.getCaballeros();
+				caballeros = GestorBBDD.getCaballeros();
 				Visor.mostrarCaballeros(caballeros);
 				idCaballero = Formulario.pedirIdCaballero(scan);
 				caballero = Formulario.pedirDatosCaballero(scan);

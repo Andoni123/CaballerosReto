@@ -8,7 +8,7 @@ import vista.*;
 
 public class Batalla {
 	public static void run(Scanner scan) throws SQLException {
-		GestorBBDDcontrolador gestorBBDD = new GestorBBDDcontrolador();
+		GestorBBDD gestorBBDD = new GestorBBDD();
 
 		gestorBBDD.conectar();
 
@@ -27,7 +27,7 @@ public class Batalla {
 		
 		System.out.println("VS");
 		
-		Caballero caballero2 = gestorBBDD.getCaballeroId(idCaballero1);
+		Caballero caballero2 = gestorBBDD.getCaballeroId(idCaballero2);
 		Visor.mostrarCaballero(caballero2);
 
 		CalculadoraBatalla.calculo(daño1, daño2, defensa1, defensa2, habilidad1, habilidad2, idCaballero1,
